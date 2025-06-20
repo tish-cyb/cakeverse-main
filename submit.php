@@ -57,27 +57,43 @@ if (isset($cake_artist_map[$cake_design])) {
 }
 
 
-// --- Simulate Database Storage ---
-// In a real application, you would connect to your MySQL database here
-// using PDO or MySQLi prepared statements to insert this data.
-// For demonstration, we'll store it in a session.
+// --- Database Connection ---
+$servername = "localhost";
+$username = "root";
+$password = ""; // default XAMPP password is empty
+$dbname = "cakeverse";
 
-$_SESSION['order_details'] = [
-    'order_id' => $order_id,
-    'customer_name' => $customer_name,
-    'address' => $address,
-    'contact_number' => $contact_number, // Store the combined '+63' + phone number
-    'delivery_date' => $delivery_date,
-    'delivery_type' => $delivery_type,
-    'cake_design_name' => $cake_design_name,
-    'cake_design' => $cake_design,
-    'layers' => implode(', ', $layers),
-    'toppings' => implode(', ', $toppings),
-    'artist_assigned' => $artist_assigned,
-    'payment_method' => $payment_method
-];
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Return a JSON response
-echo json_encode(['success' => true, 'message' => 'Order successfully processed!', 'orderId' => $order_id]);
+// Check connection
+if ($conn->connect_error) {
+    echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $conn->connect_error]);
+    exit();
+}
+
+// --- Insert Order into Database ---
+$stmt = $conn->prepare("INSERT INTO orders (
+    order_id, customer_name, address, contact_number, delivery_date, delivery_type,
+    cake_design_name, cake_design, layers, toppings, artist_assigned, payment_method
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+$layers_str = implode(', ', $layers);
+$toppings_str = implode(', ', $toppings);
+
+$stmt->bind_param(
+    "ssssssssssss",
+    $order_id, $customer_name, $address, $contact_number, $delivery_date, $delivery_type,
+    $cake_design_name, $cake_design, $layers_str, $toppings_str, $artist_assigned, $payment_method
+);
+
+if ($stmt->execute()) {
+    echo json_encode(['success' => true, 'message' => 'Order successfully processed!', 'orderId' => $order_id]);
+} else {
+    echo json_encode(['success' => false, 'message' => 'Database insert failed: ' . $stmt->error]);
+}
+
+$stmt->close();
+$conn->close();
 exit();
 ?>

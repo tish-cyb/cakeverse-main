@@ -284,6 +284,32 @@ nav ul li a {
     padding: 80px 40px;
     background-color: var(--cornsilk);
     text-align: center;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Make features and cake-showcase sections full width */
+.features,
+.cake-showcase {
+    max-width: none;
+    width: 100vw;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* Make the grid inside stretch to full width */
+.features-grid,
+.gallery-grid {
+    max-width: none;
+    width: 100vw;
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
 }
 
 .section-title {
@@ -341,8 +367,10 @@ nav ul li a {
     padding: 80px 40px;
     background-color: var(--lavender-pink);
     gap: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .about-image {
@@ -382,6 +410,10 @@ nav ul li a {
     padding: 80px 40px;
     background-color: var(--cornsilk);
     text-align: center;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .cake-showcase h2 {
@@ -468,6 +500,11 @@ footer {
     color: white;
     padding: 30px 40px 15px; /* Reduced padding */
     margin-top: auto;
+    width: 100vw;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
 }
 
 .footer-content {
@@ -477,6 +514,12 @@ footer {
     max-width: 1200px;
     margin: 0 auto 20px; /* Reduced bottom margin */
     text-align: left;
+    max-width: none;
+    width: 100vw;
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
 }
 
 .footer-section h3 {
