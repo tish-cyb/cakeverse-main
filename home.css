@@ -65,121 +65,153 @@ a:hover {
 
 /* --- Header and Navigation Styles --- */
 header {
-    background-color: var(--background-light);
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between; /* This pushes logo to left, nav to right */
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    z-index: 100;
-    position: relative;
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px;
-    align-items: center; /* Vertically align nav items and button */
-}
-
-nav ul li a {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 1.05em;
-    position: relative;
-}
-
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-.order-button {
-    background-color: var(--primary-color); /* Carnation Pink */
-    color: white;
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin-left: 20px; /* Add some space between last nav link and button */
-}
-
-.order-button:hover {
-    background-color: var(--button-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Navbar styles */
-.navbar {
-  width: 100%;
+  width: 100vw;
   background: #fff;
+  box-shadow: 0 2px 8px rgba(247, 193, 216, 0.1);
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+  z-index: 100;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between; /* <-- This is the key line */
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
   padding: 24px 40px;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(247, 193, 216, 0.1);
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  margin: 0;           /* Ensure no margin */
-  border-radius: 0;    /* Remove any border radius */
-  max-width: none;     /* Remove any max-width */
 }
 
 .navbar-logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #8d7ba7;
+  color: var(--pomp-and-power);
   font-family: 'Poppins', serif;
+  margin-right: 40px;
+  white-space: nowrap;
 }
 
 .navbar-links {
   display: flex;
-  align-items: center;
+  align-items: center; /* This is important for vertical alignment */
   gap: 32px;
+  height: 100%; /* Ensures children align to the navbar height */
+}
+
+/* Make the nav links horizontal */
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default list style and spacing */
+header nav ul li {
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-links a {
   text-decoration: none;
-  color: #8d7ba7;
+  color: var(--pomp-and-power);
   font-size: 1.2rem;
   font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
+/* Style the logo */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--pomp-and-power);
+    font-family: 'Poppins', serif;
+    margin-left: 40px;
+    margin-right: 40px; /* this keeps some space between logo and nav */
+    white-space: nowrap;
+    line-height: 1;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Align nav links next to logo */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    /* REMOVE flex: 1; and REMOVE justify-content: flex-end; */
+}
+
+/* Navigation bar styles */
+nav {
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav links */
+nav ul li a {
+  text-decoration: none;
+  color: var(--pomp-and-power);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+/* Highlight the order button */
 .order-btn {
-  margin-left: 24px;
-  background: #ffb6d5;
+  background: var(--primary-color);
   color: #fff;
+  font-weight: bold;
   border: none;
   border-radius: 24px;
   padding: 12px 32px;
-  font-size: 1.1rem;
-  font-weight: bold;
   box-shadow: 0 4px 16px #f7c1d8;
+  margin-left: 16px;
+  transition: background 0.2s;
   cursor: pointer;
+}
+
+/* Style the order button */
+.order-button {
+  background: var(--primary-color);
+  color: #fff !important;
+  font-weight: bold;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 32px;
+  box-shadow: 0 4px 16px #f7c1d8;
+  margin-left: 16px;
+  transition: background 0.2s;
+  display: inline-block;
+  margin-right: 40px; /* Adjust this value as needed */
+}
+
+.order-button:hover {
+  background: var(--button-hover);
 }
 
 /* --- Hero Section Styles --- */
@@ -1298,4 +1330,82 @@ footer {
     .feedback-section h2, .promotions-section h2 {
         font-size: 1.3em;
     }
+}
+
+/* Hamburger button styles */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  z-index: 200;
+}
+.hamburger {
+  width: 28px;
+  height: 3px;
+  background: var(--pomp-and-power);
+  display: block;
+  position: relative;
+  border-radius: 2px;
+}
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  width: 28px;
+  height: 3px;
+  background: var(--pomp-and-power);
+  position: absolute;
+  left: 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.hamburger::before { top: -9px; }
+.hamburger::after { top: 9px; }
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    width: 90vw;           /* Make menu almost full width */
+    max-width: 320px;      /* But not too wide on tablet */
+    box-shadow: 0 2px 8px rgba(247, 193, 216, 0.1);
+    display: none;
+    padding: 20px 0;
+    z-index: 150;
+    border-radius: 12px;
+    align-items: stretch;  /* Make children fill width */
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav ul li {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li a,
+  nav ul li .order-button,
+  nav ul li .order-btn {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .order-button, .order-btn {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    font-size: 1.1rem;
+    padding: 14px 0;
+  }
 }

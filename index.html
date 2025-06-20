@@ -14,18 +14,21 @@
         <div class="nav-wrapper">
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#" class="order-button">Order Now</a></li>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="order.html" class="order-button">Order Now</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-content">
                 <h1>Unforgettable Sweetness You'll Keep Craving For.</h1>
                 <p>Indulge in our exquisite collection of freshly baked cakes, crafted with love and the finest ingredients.</p>
@@ -114,7 +117,7 @@
             <div class="footer-section links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#hero">Home</a></li>
                     <li><a href="#shop">Shop</a></li>
                     <li><a href="#about-us">About Us</a></li>
                     <li><a href="order.html">Order Now</a></li>
@@ -139,5 +142,6 @@
             &copy; <?php echo date("Y"); ?> Cakes Oasis. All rights reserved.
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
